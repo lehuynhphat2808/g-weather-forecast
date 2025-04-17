@@ -85,6 +85,7 @@ flutter:
     - family: Rubik
       fonts:
         - asset: assets/fonts/rubik/Rubik-Regular.ttf
+          weight: 400
         - asset: assets/fonts/rubik/Rubik-Bold.ttf
           weight: 700
         - asset: assets/fonts/rubik/Rubik-SemiBold.ttf
