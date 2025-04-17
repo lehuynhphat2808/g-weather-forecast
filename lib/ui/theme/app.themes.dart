@@ -8,17 +8,20 @@ abstract class AppThemes {
   // Light Theme
   static ThemeData lightMode = ThemeData(
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.appBarBackground,
+      backgroundColor: AppColors.primaryColor,
       centerTitle: true,
       titleTextStyle: AppTextStyles.appBarTittle,
       titleSpacing: 24.h,
     ),
     fontFamily: FontFamily.rubik,
-    textTheme: TextTheme(titleSmall: AppTextStyles.titleSmall),
+    textTheme: TextTheme(titleSmall: AppTextStyles.titleSmall, bodyMedium: AppTextStyles.bodyMedium),
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldFocusBorderColor, width: 2.0)),
       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldBorderColor, width: 1.0)),
       hintStyle: AppTextStyles.hintText,
     ),
+    colorScheme: ColorScheme.light(primary: AppColors.primaryColor, secondary: AppColors.secondaryColor),
+    dividerColor: AppColors.divider,
+    dividerTheme: DividerThemeData(color: AppColors.divider),
   );
 }

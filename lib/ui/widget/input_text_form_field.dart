@@ -11,12 +11,11 @@ class InputTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 383.w,
       height: 52.h,
       child: TextField(
         controller: controller,
         style: AppTextStyles.inputText,
-        decoration: InputDecoration(hintText: AppLocalizations.of(context)?.search_weather_hint_text ?? ''),
+        decoration: InputDecoration(hintText: AppLocalizations.of(context)?.search_weather_form_hint_text ?? ''),
       ),
     );
   }

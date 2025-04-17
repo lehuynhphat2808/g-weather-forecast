@@ -1,5 +1,8 @@
 {
-  "home_app_bar_tittle": "Weather Dashboard",
-  "search_weather_title": "Enter a City Name",
-  "search_weather_hint_text": "E.g., New York, London, Tokyo"
+  "dashboard_app_bar_tittle": "Weather Dashboard",
+  "search_weather_form_title": "Enter a City Name",
+  "search_weather_form_hint_text": "E.g., New York, London, Tokyo",
+  "search_weather_form_button_search_text": "Search Weather",
+  "search_weather_form_or": "or",
+  "search_weather_form_button_use_current_location_text": "Use Current Location"
 }
