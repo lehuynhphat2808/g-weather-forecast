@@ -14,7 +14,11 @@ abstract class AppThemes {
       titleSpacing: 24.h,
     ),
     fontFamily: FontFamily.rubik,
-    textTheme: TextTheme(titleSmall: AppTextStyles.titleSmall, bodyMedium: AppTextStyles.bodyMedium),
+    textTheme: TextTheme(
+      titleSmall: AppTextStyles.titleSmall,
+      bodyLarge: AppTextStyles.bodyLarge,
+      bodyMedium: AppTextStyles.bodyMedium,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldFocusBorderColor, width: 2.0)),
       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldBorderColor, width: 1.0)),
