@@ -1,5 +1,6 @@
 {
   "dashboard_app_bar_tittle": "Weather Dashboard",
+  "dashboard_4_day_forecast_tittle": "4-Day Forecast",
   "search_weather_form_title": "Enter a City Name",
   "search_weather_form_hint_text": "E.g., New York, London, Tokyo",
   "search_weather_form_button_search_text": "Search Weather",

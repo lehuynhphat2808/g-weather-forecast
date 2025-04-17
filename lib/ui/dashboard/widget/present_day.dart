@@ -27,7 +27,7 @@ class PresentDay extends StatelessWidget {
             padding: EdgeInsets.only(right: 11.w),
             child: Column(
               children: [
-                Image.asset(WeatherIconHelper.getIconPath(1183), width: 75.w, height: 70.h),
+                Image.asset(WeatherIconHelper.getIconPath(1183), width: 70.w, height: 70.w),
                 Text('Moderate rain', style: Theme.of(context).textTheme.bodyMedium),
               ],
             ),

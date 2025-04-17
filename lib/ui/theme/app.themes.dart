@@ -16,6 +16,7 @@ abstract class AppThemes {
     fontFamily: FontFamily.rubik,
     textTheme: TextTheme(
       titleSmall: AppTextStyles.titleSmall,
+      titleMedium: AppTextStyles.titleMedium,
       bodyLarge: AppTextStyles.bodyLarge,
       bodyMedium: AppTextStyles.bodyMedium,
     ),

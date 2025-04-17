@@ -11,15 +11,17 @@ class DashBoardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)?.dashboard_app_bar_tittle ?? '')),
-      body: Padding(
-        padding: EdgeInsets.only(top: 44.h, left: 34.w, right: 34.w),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(width: 383.w, child: SearchForm()),
-            SizedBox(width: 39.w),
-            Expanded(child: WeatherDetail()),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: 44.h, left: 34.w, right: 34.w),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(width: 383.w, child: SearchForm()),
+              SizedBox(width: 39.w),
+              Expanded(child: WeatherDetail()),
+            ],
+          ),
         ),
       ),
     );
