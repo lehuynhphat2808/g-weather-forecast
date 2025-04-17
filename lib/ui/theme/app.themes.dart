@@ -18,7 +18,6 @@ abstract class AppThemes {
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldFocusBorderColor, width: 2.0)),
       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldBorderColor, width: 1.0)),
-      labelStyle: TextStyle(color: AppColors.textFieldFocusBorderColor, fontSize: 16),
       hintStyle: AppTextStyles.hintText,
     ),
   );

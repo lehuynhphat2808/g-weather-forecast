@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:g_weather_forecast/ui/home/widget/search_form.dart';
+import 'package:g_weather_forecast/ui/dashboard/widget/search_form.dart';
 
 class DashBoardPage extends StatelessWidget {
   const DashBoardPage({super.key});
