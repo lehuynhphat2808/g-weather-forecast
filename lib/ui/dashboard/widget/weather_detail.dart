@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/ui/dashboard/widget/day_forecast_card.dart';
 import 'package:g_weather_forecast/ui/dashboard/widget/present_day.dart' show PresentDay;
 
@@ -22,7 +24,27 @@ class WeatherDetail extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         SizedBox(height: 25.h),
-        Row(spacing: 16.w, children: List.generate(4, (index) => Expanded(child: DayForecastCard()))),
+        BlocBuilder(
+          bloc: context.read<WeatherBloc>(),
+          builder: (context, state) {
+            if (state is LoadingGetWeatherState) {
+              return CircularProgressIndicator();
+            } else if (state is SuccessGetWeatherState) {
+              return IntrinsicHeight(
+                child: Row(
+                  spacing: 16.w,
+                  children:
+                      state.getWeatherResponse.forecast?.forecastday
+                          ?.map((e) => Expanded(child: DayForecastCard(forecastDayBO: e)))
+                          .toList() ??
+                      [],
+                ),
+              );
+            } else {
+              return Text('${AppLocalizations.of(context)?.dashboard_not_found}');
+            }
+          },
+        ),
       ],
     );
   }

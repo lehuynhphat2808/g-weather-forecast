@@ -43,7 +43,7 @@ class _PresentDayState extends State<PresentDay> {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     Text(
-                      '${AppLocalizations.of(context)?.dashboard_temp}: ${state.getWeatherResponse.current?.tempC}',
+                      '${AppLocalizations.of(context)?.dashboard_temp}: ${state.getWeatherResponse.current?.tempC} ${AppLocalizations.of(context)?.dashboard_temp_unit}',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Text(
@@ -51,7 +51,7 @@ class _PresentDayState extends State<PresentDay> {
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Text(
-                      '${AppLocalizations.of(context)?.dashboard_humidity}: ${state.getWeatherResponse.current?.humidity}%',
+                      '${AppLocalizations.of(context)?.dashboard_humidity}: ${state.getWeatherResponse.current?.humidity}${AppLocalizations.of(context)?.dashboard_humidity_unit}',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
