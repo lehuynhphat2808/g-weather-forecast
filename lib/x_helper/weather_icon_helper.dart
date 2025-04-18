@@ -17,10 +17,9 @@ class WeatherIconHelper {
 
       // 🌫 Fog / Mist
       case 1030:
-        return 'assets/icons/mist.png';
       case 1135:
       case 1147:
-        return 'assets/icons/fog.png';
+        return 'assets/icons/mist.png';
 
       // 🌧 Light Rain
       case 1063:
@@ -70,7 +69,7 @@ class WeatherIconHelper {
 
       // 🚫 Default fallback
       default:
-        return 'assets/icons/default.png';
+        return 'assets/icons/partly_cloudy.png';
     }
   }
 }

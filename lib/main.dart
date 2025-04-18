@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/di_locator.dart';
 import 'package:g_weather_forecast/ui/dashboard/page/dashboard.page.dart';
 import 'package:g_weather_forecast/ui/theme/app.themes.dart';
@@ -12,7 +14,7 @@ void main() async {
   await dotenv.load();
 
   configureDependencies();
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(providers: [BlocProvider(create: (context) => WeatherBloc())], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
