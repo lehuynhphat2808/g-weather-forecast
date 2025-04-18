@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_weather_forecast/di_locator.dart';
 import 'package:g_weather_forecast/ui/dashboard/page/dashboard.page.dart';
 import 'package:g_weather_forecast/ui/theme/app.themes.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
