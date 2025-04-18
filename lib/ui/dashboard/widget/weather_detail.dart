@@ -6,8 +6,19 @@ import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/ui/dashboard/widget/day_forecast_card.dart';
 import 'package:g_weather_forecast/ui/dashboard/widget/present_day.dart' show PresentDay;
 
-class WeatherDetail extends StatelessWidget {
+class WeatherDetail extends StatefulWidget {
   const WeatherDetail({super.key});
+
+  @override
+  State<WeatherDetail> createState() => _WeatherDetailState();
+}
+
+class _WeatherDetailState extends State<WeatherDetail> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<WeatherBloc>().add(OnGettingSavedWeatherEvent(isLoading: true));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +46,8 @@ class WeatherDetail extends StatelessWidget {
                   spacing: 16.w,
                   children:
                       state.getWeatherResponse.forecast?.forecastday
-                          ?.map((e) => Expanded(child: DayForecastCard(forecastDayBO: e)))
+                          ?.skip(1)
+                          .map((e) => Expanded(child: DayForecastCard(forecastDayBO: e)))
                           .toList() ??
                       [],
                 ),

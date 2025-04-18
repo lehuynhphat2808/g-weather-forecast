@@ -12,21 +12,18 @@ class DashBoardPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)?.dashboard_app_bar_tittle ?? '')),
       body: SingleChildScrollView(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            constraints: BoxConstraints(minWidth: 600),
-            child: Padding(
-              padding: EdgeInsets.only(top: 44.h, left: 34.w, right: 34.w),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(width: 383.w, child: SearchForm()),
-                  SizedBox(width: 39.w),
-                  Expanded(child: WeatherDetail()),
-                ],
-              ),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          constraints: BoxConstraints(minWidth: 600),
+          child: Padding(
+            padding: EdgeInsets.only(top: 44.h, left: 34.w, right: 34.w),
+            child: Wrap(
+              direction: Axis.horizontal,
+              children: [
+                SizedBox(width: 383.w, child: SearchForm()),
+                SizedBox(width: 39.w),
+                SizedBox(width: 790.w, child: WeatherDetail()),
+              ],
             ),
           ),
         ),

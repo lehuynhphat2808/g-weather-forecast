@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:g_weather_forecast/di_locator.dart';
+import 'package:infrastructure_base/secure_storage/secure_storage.dart';
+import 'package:infrastructure_base/x_helper/x.constant.dart';
 import 'package:messages/weather/get_weather.request.dart';
 import 'package:messages/weather/get_weather.response.dart';
 import 'package:messages/weather/get_weather_error.response.dart';
@@ -11,6 +16,7 @@ part 'weather_state.dart';
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   WeatherBloc() : super(WeatherInitialState()) {
     on<OnGettingWeatherEvent>(_onGettingWeatherEvent);
+    on<OnGettingSavedWeatherEvent>(_onGettingSavedWeatherEvent);
   }
 
   /// [_onGettingWeatherEvent] is called when the [OnGettingWeatherEvent] is added.
@@ -27,13 +33,26 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       emitter(LoadingGetWeatherState());
     }
     final result = await getIt<GetWeatherQueryHandler>().handle(event.getWeatherRequest);
-    result.fold(
+    await result.fold(
       (l) {
         emitter(ErrorGetWeatherState(GetWeatherErrorResponse(title: l.title, detail: l.detail, status: l.status)));
       },
-      (r) {
+      (r) async {
+        await getIt<SecureStorage>().setItem(XConstant.WEATHER_KEY, jsonEncode(r.toJson()));
         emitter(SuccessGetWeatherState(getWeatherResponse: r));
       },
     );
+  }
+
+  _onGettingSavedWeatherEvent(OnGettingSavedWeatherEvent event, Emitter<WeatherState> emitter) async {
+    if (event.isLoading) {
+      emitter(LoadingGetWeatherState());
+    }
+    final result = await getIt<SecureStorage>().getItem(XConstant.WEATHER_KEY);
+    if (result != null) {
+      emitter(SuccessGetWeatherState(getWeatherResponse: GetWeatherResponse.fromJson(jsonDecode(result))));
+    } else {
+      add(OnGettingWeatherEvent(GetWeatherRequest(locationName: dotenv.get('DEFAULT_LOCATION'))));
+    }
   }
 }

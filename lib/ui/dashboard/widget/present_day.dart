@@ -4,21 +4,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/x_helper/weather_icon_helper.dart';
-import 'package:messages/weather/get_weather.request.dart';
 
-class PresentDay extends StatefulWidget {
+class PresentDay extends StatelessWidget {
   const PresentDay({super.key});
-
-  @override
-  State<PresentDay> createState() => _PresentDayState();
-}
-
-class _PresentDayState extends State<PresentDay> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<WeatherBloc>().add(OnGettingWeatherEvent(isLoading: true, GetWeatherRequest(locationName: 'London')));
-  }
 
   @override
   Widget build(BuildContext context) {

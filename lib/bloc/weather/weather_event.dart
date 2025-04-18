@@ -11,3 +11,10 @@ class OnGettingWeatherEvent extends WeatherEvent {
 
   OnGettingWeatherEvent(this.getWeatherRequest, {this.isLoading = true});
 }
+
+// On Fetching Weather By Saved Data
+class OnGettingSavedWeatherEvent extends WeatherEvent {
+  final bool isLoading;
+
+  OnGettingSavedWeatherEvent({this.isLoading = true});
+}
