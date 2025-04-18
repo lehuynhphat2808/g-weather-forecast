@@ -15,5 +15,12 @@
   "search_weather_form_hint_text": "E.g., New York, London, Tokyo",
   "search_weather_form_button_search_text": "Search Weather",
   "search_weather_form_or": "or",
-  "search_weather_form_button_use_current_location_text": "Use Current Location"
+  "search_weather_form_button_use_current_location_text": "Use Current Location",
+  "email_send_otp_failed": "Something went wrong. Please try again later.",
+  "email_incorrect_otp": "Incorrect OTP.",
+  "email": "Email",
+  "invalid_email": "Invalid email",
+  "send_otp": "Send OTP",
+  "enter_otp": "Enter OTP",
+  "verify_and_subscribe": "Verify & Subscribe"
 }

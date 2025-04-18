@@ -10,6 +10,7 @@ import 'package:messages/email/send_otp.request.dart';
 @Injectable(as: AbstractEmailReadableRepository)
 class EmailReadableRepository implements AbstractEmailReadableRepository {
   final EmailContext emailContext = EmailContext();
+  final http.Client client = http.Client();
 
   EmailReadableRepository();
 
@@ -21,7 +22,7 @@ class EmailReadableRepository implements AbstractEmailReadableRepository {
 
     final body = jsonEncode(request.toJson());
 
-    final response = await http.post(url, headers: headers, body: body);
+    final response = await client.post(url, headers: headers, body: body);
 
     return response;
   }
