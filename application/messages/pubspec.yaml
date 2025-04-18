@@ -1,6 +1,7 @@
-name: core_base
+name: messages
 description: "A new Flutter package project."
 version: 0.0.1
+publish_to: none
 homepage:
 
 environment:
@@ -8,19 +9,24 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  #  core
+  core_base:
+    path: ../../core/base
+  domain:
+    path: ../../core/domain
+  #  application
+  application_base:
+    path: ../base
   flutter:
     sdk: flutter
-  http: ^1.3.0
   json_annotation: ^4.9.0
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  build_runner: ^2.4.14
   json_serializable: ^6.9.5
-
+  build_runner: ^2.4.14
 
 
 # For information on the generic Dart part of this file, see the

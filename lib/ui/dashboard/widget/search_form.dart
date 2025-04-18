@@ -24,6 +24,9 @@ class SearchForm extends StatelessWidget {
         InputTextFormField(controller: _searchController),
         SizedBox(height: 22.h),
         BasicButton(
+          onPressed: () {
+            print(_searchController.text);
+          },
           text: AppLocalizations.of(context)?.search_weather_form_button_search_text ?? '',
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
@@ -43,6 +46,7 @@ class SearchForm extends StatelessWidget {
         ),
         SizedBox(height: 16.h),
         BasicButton(
+          onPressed: () {},
           text: AppLocalizations.of(context)?.search_weather_form_button_use_current_location_text ?? '',
           backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
