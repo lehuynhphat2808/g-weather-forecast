@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/di_locator.dart';
 import 'package:g_weather_forecast/ui/dashboard/page/dashboard.page.dart';
+import 'package:g_weather_forecast/ui/dashboard/page/dashboard_mobile.page.dart';
 import 'package:g_weather_forecast/ui/theme/app.themes.dart';
 
 import 'bloc/email/email_bloc.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             theme: AppThemes.lightMode,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            home: const DashBoardPage(),
+            home: MediaQuery.of(context).size.width > 600 ? DashBoardPage() : DashBoardMobilePage(),
           ),
     );
   }

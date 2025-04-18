@@ -76,7 +76,7 @@ class _ForecastState extends State<Forecast> {
             if (state is LoadingGetWeatherState) {
               return SizedBox(
                 height: 185.h,
-                width: 790.w,
+                width: MediaQuery.of(context).size.width > 600 ? 790.w : null,
                 child: Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.tertiary)),
               );
             } else if (state is SuccessGetWeatherState) {
@@ -87,16 +87,25 @@ class _ForecastState extends State<Forecast> {
                 child: SingleChildScrollView(
                   controller: _scrollController,
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children:
-                        forecastDayBOs
-                            .map(
-                              (e) => Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                                child: DayForecastCard(forecastDayBO: e),
-                              ),
-                            )
-                            .toList(),
+                  child: IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children:
+                          forecastDayBOs
+                              .map(
+                                (e) => Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                  child: SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width > 600
+                                            ? 184.w
+                                            : (MediaQuery.of(context).size.width - 8.w * 8) / 4,
+                                    child: DayForecastCard(forecastDayBO: e),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                    ),
                   ),
                 ),
               );

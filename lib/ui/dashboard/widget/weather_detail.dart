@@ -24,7 +24,7 @@ class _WeatherDetailState extends State<WeatherDetail> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
-      children: [SizedBox(height: 8.h), PresentDay(), SizedBox(height: 30.h), Expanded(child: Forecast())],
+      children: [SizedBox(height: 8.h), PresentDay(), SizedBox(height: 30.h), Forecast()],
     );
   }
 }
