@@ -4,11 +4,11 @@ import 'dart:io';
 import 'package:core_base/abstract.readable.repository.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:infrastructure_base/xfw.context.dart';
+import 'package:infrastructure_base/base.context.dart';
 
 /// A repository that provides read operations for entities.
 class ReadableRepository implements AbstractReadableRepository {
-  final XFWContext context;
+  final BaseContext context;
   final http.Client client = http.Client();
 
   ReadableRepository({required this.context});

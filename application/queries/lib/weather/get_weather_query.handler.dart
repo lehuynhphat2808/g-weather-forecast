@@ -5,8 +5,8 @@ import 'package:domain/weather/abstract.weather.readable.repository.dart';
 import 'package:either_dart/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:messages/abstract.error.response.dart';
-import 'package:messages/weather/get_weather.response.dart';
 import 'package:messages/weather/get_weather.request.dart';
+import 'package:messages/weather/get_weather.response.dart';
 import 'package:messages/weather/get_weather_error.response.dart';
 
 /// This class is a query handler for getting weather by location name.

@@ -1,9 +1,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:infrastructure_base/context.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class XFWContext implements Context {
+class BaseContext {
   String _endpoint = dotenv.get('API_URL');
   String _apiKey = dotenv.get('API_KEY');
 

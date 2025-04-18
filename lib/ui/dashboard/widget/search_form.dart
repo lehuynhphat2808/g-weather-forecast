@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_weather_forecast/di_locator.dart';
 import 'package:g_weather_forecast/ui/widget/basic_button.dart';
 import 'package:g_weather_forecast/ui/widget/input_text_form_field.dart';
+import 'package:messages/weather/get_weather.request.dart';
+import 'package:queries/weather/get_weather_query.handler.dart';
 
 class SearchForm extends StatelessWidget {
   SearchForm({super.key});
@@ -24,8 +27,19 @@ class SearchForm extends StatelessWidget {
         InputTextFormField(controller: _searchController),
         SizedBox(height: 22.h),
         BasicButton(
-          onPressed: () {
+          onPressed: () async {
             print(_searchController.text);
+            final result = await getIt<GetWeatherQueryHandler>().handle(
+              GetWeatherRequest(locationName: _searchController.text),
+            );
+            result.fold(
+              (left) {
+                print('left: ${left.detail}');
+              },
+              (right) {
+                print('right: ${right.current?.toJson()}');
+              },
+            );
           },
           text: AppLocalizations.of(context)?.search_weather_form_button_search_text ?? '',
           backgroundColor: Theme.of(context).colorScheme.primary,
