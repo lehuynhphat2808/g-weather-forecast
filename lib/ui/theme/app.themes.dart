@@ -26,7 +26,11 @@ abstract class AppThemes {
       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.textFieldBorderColor, width: 1.0)),
       hintStyle: AppTextStyles.hintText,
     ),
-    colorScheme: ColorScheme.light(primary: AppColors.primaryColor, secondary: AppColors.secondaryColor),
+    colorScheme: ColorScheme.light(
+      primary: AppColors.primaryColor,
+      secondary: AppColors.secondaryColor,
+      tertiary: AppColors.tertiary,
+    ),
     dividerColor: AppColors.divider,
     dividerTheme: DividerThemeData(color: AppColors.divider),
   );

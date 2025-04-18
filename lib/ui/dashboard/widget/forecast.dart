@@ -74,7 +74,11 @@ class _ForecastState extends State<Forecast> {
           bloc: context.read<WeatherBloc>(),
           builder: (context, state) {
             if (state is LoadingGetWeatherState) {
-              return CircularProgressIndicator();
+              return SizedBox(
+                height: 185.h,
+                width: 790.w,
+                child: Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.tertiary)),
+              );
             } else if (state is SuccessGetWeatherState) {
               return ScrollConfiguration(
                 behavior: MaterialScrollBehavior().copyWith(
@@ -95,14 +99,6 @@ class _ForecastState extends State<Forecast> {
                             .toList(),
                   ),
                 ),
-                //   ListView.separated(
-                //   padding: EdgeInsets.all(0),
-                //   controller: _scrollController,
-                //   scrollDirection: Axis.horizontal,
-                //   itemCount: forecastDayBOs.length,
-                //   itemBuilder: (context, index) => DayForecastCard(forecastDayBO: forecastDayBOs[index]),
-                //   separatorBuilder: (context, index) => SizedBox(width: 16.w),
-                // ),
               );
             } else {
               return Text('${AppLocalizations.of(context)?.dashboard_not_found}');
