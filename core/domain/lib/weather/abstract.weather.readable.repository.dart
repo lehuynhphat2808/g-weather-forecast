@@ -4,5 +4,5 @@ import 'package:messages/weather/get_weather.request.dart';
 
 abstract class AbstractWeatherReadableRepository extends AbstractReadableRepository {
   /// get weather by location name
-  Future<http.Response> getWeather(GetWeatherRequest request);
+  Future<http.Response> getForecast(GetWeatherRequest request);
 }

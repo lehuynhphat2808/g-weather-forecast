@@ -6,8 +6,9 @@ part 'get_weather.request.g.dart';
 class GetWeatherRequest {
   @JsonKey(name: 'locationName')
   final String locationName;
+  final int? days;
 
-  GetWeatherRequest({required this.locationName});
+  GetWeatherRequest({required this.locationName, this.days});
 
   factory GetWeatherRequest.fromJson(Map<String, dynamic> json) => _$GetWeatherRequestFromJson(json);
 

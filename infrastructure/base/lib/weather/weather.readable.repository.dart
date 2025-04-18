@@ -15,7 +15,7 @@ class WeatherReadableRepository extends ReadableRepository implements AbstractWe
   /// The `Either` object will either contain a `GetWeatherResponse` object if the request was successful, or a
   /// `GetWeatherErrorResponse` object if the request failed.
   @override
-  Future<http.Response> getWeather(GetWeatherRequest request) async {
-    return findAll('${EndpointConstant.getWeatherCurrent}?q=${request.locationName}');
+  Future<http.Response> getForecast(GetWeatherRequest request) async {
+    return findAll('${EndpointConstant.getForecast}?q=${request.locationName}&days=${request.days ?? 4}');
   }
 }

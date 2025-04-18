@@ -1,3 +1,3 @@
 class EndpointConstant {
-  static get getWeatherCurrent => 'current.json';
+  static get getForecast => 'forecast.json';
 }

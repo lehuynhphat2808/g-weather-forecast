@@ -14,10 +14,14 @@ GetWeatherResponse _$GetWeatherResponseFromJson(Map<String, dynamic> json) =>
       current: json['current'] == null
           ? null
           : CurrentBO.fromJson(json['current'] as Map<String, dynamic>),
+      forecast: json['forecast'] == null
+          ? null
+          : ForecastBO.fromJson(json['forecast'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GetWeatherResponseToJson(GetWeatherResponse instance) =>
     <String, dynamic>{
       'location': instance.location,
       'current': instance.current,
+      'forecast': instance.forecast,
     };

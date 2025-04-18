@@ -8,23 +8,11 @@ part of 'location.bo.dart';
 
 LocationBO _$LocationBOFromJson(Map<String, dynamic> json) => LocationBO(
       name: json['name'] as String?,
-      region: json['region'] as String?,
-      country: json['country'] as String?,
-      lat: (json['lat'] as num?)?.toDouble(),
-      lon: (json['lon'] as num?)?.toDouble(),
-      tzId: json['tz_id'] as String?,
-      localtimeEpoch: (json['localtime_epoch'] as num?)?.toInt(),
       localtime: json['localtime'] as String?,
     );
 
 Map<String, dynamic> _$LocationBOToJson(LocationBO instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'region': instance.region,
-      'country': instance.country,
-      'lat': instance.lat,
-      'lon': instance.lon,
-      'tz_id': instance.tzId,
-      'localtime_epoch': instance.localtimeEpoch,
       'localtime': instance.localtime,
     };

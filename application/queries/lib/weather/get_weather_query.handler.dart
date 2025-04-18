@@ -21,7 +21,7 @@ class GetWeatherQueryHandler extends RequestHandler<GetWeatherRequest, GetWeathe
 
   @override
   Future<Either<AbstractErrorResponse, GetWeatherResponse>> handle(GetWeatherRequest request) async {
-    final result = await weatherReadableRepository.getWeather(request);
+    final result = await weatherReadableRepository.getForecast(request);
     if (result.statusCode == 200) {
       return Right(GetWeatherResponse.fromJson(jsonDecode(result.body)));
     }
