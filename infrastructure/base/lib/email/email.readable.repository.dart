@@ -1,0 +1,28 @@
+import 'dart:convert';
+
+import 'package:domain/email/abstract.email.readable.repository.dart';
+import 'package:http/http.dart' as http;
+import 'package:infrastructure_base/email_context.dart';
+import 'package:infrastructure_base/x_helper/endpoint.constant.dart';
+import 'package:injectable/injectable.dart';
+import 'package:messages/email/send_otp.request.dart';
+
+@Injectable(as: AbstractEmailReadableRepository)
+class EmailReadableRepository implements AbstractEmailReadableRepository {
+  final EmailContext emailContext = EmailContext();
+
+  EmailReadableRepository();
+
+  @override
+  Future<http.Response> sendOTP(SendOTPRequest request) async {
+    final url = Uri.parse('${emailContext.endpoint}/${EndpointConstant.sendOtp}');
+
+    final headers = {'Content-Type': 'application/json'};
+
+    final body = jsonEncode(request.toJson());
+
+    final response = await http.post(url, headers: headers, body: body);
+
+    return response;
+  }
+}

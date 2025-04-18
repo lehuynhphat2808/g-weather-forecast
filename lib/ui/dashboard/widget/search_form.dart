@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/ui/widget/basic_button.dart';
+import 'package:g_weather_forecast/ui/widget/basic_form_with_otp.dart';
 import 'package:g_weather_forecast/ui/widget/input_text_form_field.dart';
 import 'package:messages/weather/get_weather.request.dart';
 
@@ -54,6 +55,43 @@ class SearchForm extends StatelessWidget {
           onPressed: () {},
           text: AppLocalizations.of(context)?.search_weather_form_button_use_current_location_text ?? '',
           backgroundColor: Theme.of(context).colorScheme.secondary,
+        ),
+        SizedBox(height: 30.h),
+        Text(
+          AppLocalizations.of(context)?.dashboard_receive_email_notification ?? '',
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        SizedBox(height: 16.h),
+        Row(
+          children: [
+            Expanded(
+              child: BasicButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder:
+                        (context) => AlertDialog(
+                          title: Text(AppLocalizations.of(context)?.dashboard_register ?? ''),
+                          content: BasicFormWithOTP(
+                            onSuccess: (email) {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ),
+                  );
+                },
+                text: AppLocalizations.of(context)?.dashboard_register ?? '',
+                backgroundColor: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            Expanded(
+              child: BasicButton(
+                onPressed: () {},
+                text: AppLocalizations.of(context)?.dashboard_unsubscribe ?? '',
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+          ],
         ),
       ],
     );
