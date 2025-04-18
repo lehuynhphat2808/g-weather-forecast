@@ -13,6 +13,7 @@ abstract class AppThemes {
       titleTextStyle: AppTextStyles.appBarTittle,
       titleSpacing: 24.h,
     ),
+    scaffoldBackgroundColor: AppColors.backgroundColor,
     fontFamily: FontFamily.rubik,
     textTheme: TextTheme(
       titleSmall: AppTextStyles.titleSmall,

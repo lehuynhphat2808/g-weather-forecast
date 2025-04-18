@@ -17,7 +17,7 @@ class PresentDay extends StatelessWidget {
         bloc: context.read<WeatherBloc>(),
         builder: (context, state) {
           if (state is LoadingGetWeatherState) {
-            return CircularProgressIndicator(color: Colors.red);
+            return CircularProgressIndicator(color: Theme.of(context).colorScheme.secondary);
           } else if (state is SuccessGetWeatherState) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

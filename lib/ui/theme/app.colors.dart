@@ -15,4 +15,5 @@ abstract class AppColors {
   static const Color buttonText = Color(0xffDBE1FC);
   static const Color bodyMedium = Color(0xffDBE1FC);
   static const Color divider = Color(0xff8F9AA3);
+  static const Color backgroundColor = Color(0xffe3f2fd);
 }
