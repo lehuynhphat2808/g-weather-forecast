@@ -12,9 +12,18 @@ class OnSendingOTPEvent extends EmailEvent {
   OnSendingOTPEvent(this.sendOTPRequest, {this.isLoading = true});
 }
 
-// On Fetching Email By Saved Data
-class OnGettingSavedEmailEvent extends EmailEvent {
+// On Unsubscribe
+class OnUnsubscribingEvent extends EmailEvent {
   final bool isLoading;
+  final UnsubscribeRequest unsubscribeRequest;
 
-  OnGettingSavedEmailEvent({this.isLoading = true});
+  OnUnsubscribingEvent(this.unsubscribeRequest, {this.isLoading = true});
+}
+
+// On Register
+class OnRegisteringEvent extends EmailEvent {
+  final bool isLoading;
+  final RegisterRequest registerRequest;
+
+  OnRegisteringEvent(this.registerRequest, {this.isLoading = true});
 }

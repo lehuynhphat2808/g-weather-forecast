@@ -81,7 +81,7 @@ class _BasicFormWithOTPState extends State<BasicFormWithOTP> {
                     onPressed: state is LoadingSentOTPState ? null : _sendOTP,
                     child:
                         state is LoadingSentOTPState
-                            ? const CircularProgressIndicator()
+                            ? SizedBox(height: 12.w, width: 12.w, child: const CircularProgressIndicator())
                             : Text(AppLocalizations.of(context)?.send_otp ?? ''),
                   )
                   : Column(

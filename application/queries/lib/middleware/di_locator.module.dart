@@ -10,7 +10,9 @@ import 'package:domain/email/abstract.email.readable.repository.dart' as _i430;
 import 'package:domain/weather/abstract.weather.readable.repository.dart'
     as _i664;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:queries/email/register.handler.dart' as _i631;
 import 'package:queries/email/send_otp.handler.dart' as _i154;
+import 'package:queries/email/unsubscribe.handler.dart' as _i1010;
 import 'package:queries/weather/get_weather_query.handler.dart' as _i850;
 
 class QueriesPackageModule extends _i526.MicroPackageModule {
@@ -19,6 +21,11 @@ class QueriesPackageModule extends _i526.MicroPackageModule {
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     gh.factory<_i154.SendOTPQueryHandler>(() =>
         _i154.SendOTPQueryHandler(gh<_i430.AbstractEmailReadableRepository>()));
+    gh.factory<_i631.RegisterQueryHandler>(() => _i631.RegisterQueryHandler(
+        gh<_i430.AbstractEmailReadableRepository>()));
+    gh.factory<_i1010.UnsubscribeQueryHandler>(() =>
+        _i1010.UnsubscribeQueryHandler(
+            gh<_i430.AbstractEmailReadableRepository>()));
     gh.factory<_i850.GetWeatherQueryHandler>(() => _i850.GetWeatherQueryHandler(
         gh<_i664.AbstractWeatherReadableRepository>()));
   }

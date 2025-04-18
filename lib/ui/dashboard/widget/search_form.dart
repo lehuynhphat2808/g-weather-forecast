@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:g_weather_forecast/bloc/email/email_bloc.dart';
 import 'package:g_weather_forecast/bloc/weather/weather_bloc.dart';
 import 'package:g_weather_forecast/ui/widget/basic_button.dart';
 import 'package:g_weather_forecast/ui/widget/basic_form_with_otp.dart';
 import 'package:g_weather_forecast/ui/widget/input_text_form_field.dart';
+import 'package:messages/email/register.request.dart';
+import 'package:messages/email/unsubscribe.request.dart';
 import 'package:messages/weather/get_weather.request.dart';
 
 class SearchForm extends StatelessWidget {
@@ -72,9 +75,23 @@ class SearchForm extends StatelessWidget {
                     builder:
                         (context) => AlertDialog(
                           title: Text(AppLocalizations.of(context)?.dashboard_register ?? ''),
-                          content: BasicFormWithOTP(
-                            onSuccess: (email) {
-                              Navigator.of(context).pop();
+                          content: BlocBuilder(
+                            bloc: context.read<EmailBloc>(),
+                            builder: (context, state) {
+                              if (state is LoadingRegisterState) {
+                                return Center(child: CircularProgressIndicator());
+                              } else if (state is ErrorRegisterState) {
+                                return Center(child: Text(AppLocalizations.of(context)?.email_register_failed ?? ''));
+                              }
+                              return BasicFormWithOTP(
+                                onSuccess: (email) {
+                                  context.read<EmailBloc>().add(OnRegisteringEvent(RegisterRequest(email: email)));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(AppLocalizations.of(context)?.email_register_success ?? '')),
+                                  );
+                                  Navigator.of(context).pop();
+                                },
+                              );
                             },
                           ),
                         ),
@@ -86,7 +103,45 @@ class SearchForm extends StatelessWidget {
             ),
             Expanded(
               child: BasicButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder:
+                        (context) => AlertDialog(
+                          title: Text(AppLocalizations.of(context)?.dashboard_unsubscribe ?? ''),
+                          content: Builder(
+                            builder: (context) {
+                              return BlocBuilder(
+                                bloc: context.read<EmailBloc>(),
+                                builder: (context, state) {
+                                  if (state is LoadingRegisterState) {
+                                    return Center(child: CircularProgressIndicator());
+                                  } else if (state is ErrorRegisterState) {
+                                    return Center(
+                                      child: Text(AppLocalizations.of(context)?.email_unsubscribe_failed ?? ''),
+                                    );
+                                  }
+
+                                  return BasicFormWithOTP(
+                                    onSuccess: (email) {
+                                      context.read<EmailBloc>().add(
+                                        OnUnsubscribingEvent(UnsubscribeRequest(email: email)),
+                                      );
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text(AppLocalizations.of(context)?.email_unsubscribe_success ?? ''),
+                                        ),
+                                      );
+                                      Navigator.of(context).pop();
+                                    },
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                  );
+                },
                 text: AppLocalizations.of(context)?.dashboard_unsubscribe ?? '',
                 backgroundColor: Theme.of(context).colorScheme.secondary,
               ),

@@ -23,3 +23,40 @@ class SuccessSentOTPState extends EmailState {
 }
 
 // --------------------End Sent OTP States-------------------- //
+
+// --------------------Start Unsubscribe States-------------------- //
+class LoadingUnsubscribeState extends EmailState {}
+
+class ErrorUnsubscribeState extends EmailState {
+  final UnsubscribeErrorResponse unsubscribeErrorResponse;
+
+  ErrorUnsubscribeState(this.unsubscribeErrorResponse);
+}
+
+class SuccessUnsubscribeState extends EmailState {
+  final UnsubscribeResponse unsubscribeResponse;
+
+  SuccessUnsubscribeState({required this.unsubscribeResponse});
+}
+
+class UnsubscribeInitialState extends EmailState {}
+
+// --------------------End Unsubscribe States-------------------- //
+// --------------------Start Register States-------------------- //
+class LoadingRegisterState extends EmailState {}
+
+class ErrorRegisterState extends EmailState {
+  final RegisterErrorResponse registerErrorResponse;
+
+  ErrorRegisterState(this.registerErrorResponse);
+}
+
+class SuccessRegisterState extends EmailState {
+  final RegisterResponse registerResponse;
+
+  SuccessRegisterState({required this.registerResponse});
+}
+
+class RegisterInitialState extends EmailState {}
+
+// --------------------End Register States-------------------- //
