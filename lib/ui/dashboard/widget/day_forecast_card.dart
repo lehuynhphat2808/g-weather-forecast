@@ -12,12 +12,14 @@ class DayForecastCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: BoxConstraints(minWidth: 184.w, minHeight: 226.h),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(5.w),
       ),
       padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 15.h),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('(${forecastDayBO.date?.split(' ').first})', style: Theme.of(context).textTheme.bodyMedium),

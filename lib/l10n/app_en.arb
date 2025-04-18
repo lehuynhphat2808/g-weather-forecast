@@ -1,6 +1,6 @@
 {
   "dashboard_app_bar_tittle": "Weather Dashboard",
-  "dashboard_4_day_forecast_tittle": "4-Day Forecast",
+  "dashboard_day_forecast_tittle": "-Day Forecast",
   "dashboard_temp": "Temperature",
   "dashboard_temp_unit": "°C",
   "dashboard_wind": "Wind",
