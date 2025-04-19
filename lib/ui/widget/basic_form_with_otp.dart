@@ -90,6 +90,7 @@ class _BasicFormWithOTPState extends State<BasicFormWithOTP> {
                         controller: _otpController,
                         keyboardType: TextInputType.number,
                         maxLength: 6,
+                        style: AppTextStyles.inputText,
                         decoration: InputDecoration(labelText: AppLocalizations.of(context)?.enter_otp ?? ''),
                       ),
                       SizedBox(height: 8.h),
