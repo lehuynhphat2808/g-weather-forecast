@@ -23,7 +23,11 @@ class DayForecastCard extends StatelessWidget {
         children: [
           Text('(${forecastDayBO.date?.split(' ').first})', style: Theme.of(context).textTheme.bodyMedium),
           SizedBox(height: 18.h),
-          Image.asset(WeatherIconHelper.getIconPath(1183), width: 42.w, height: 42.w),
+          Image.asset(
+            WeatherIconHelper.getIconPath(forecastDayBO.day?.condition?.code ?? -1),
+            width: 42.w,
+            height: 42.w,
+          ),
           SizedBox(height: 18.h),
           Text(
             '${AppLocalizations.of(context)?.dashboard_temp}: ${forecastDayBO.day?.avgTempC} ${AppLocalizations.of(context)?.dashboard_temp_unit}',
